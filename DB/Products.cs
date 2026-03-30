@@ -24,6 +24,7 @@ namespace CoffeeShop.DB
         public decimal Price { get; set; }
         public int CategoryId { get; set; }
         public string ImagePath { get; set; }
+        public Nullable<bool> IsDeleted { get; set; }
     
         public virtual Categories Categories { get; set; }
         public virtual ICollection<OrderItems> OrderItems { get; set; }

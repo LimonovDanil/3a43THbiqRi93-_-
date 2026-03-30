@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:CoffeeShop.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Товары" Background="#F5F5F5">
+     Title="Товары" Background="#F5F5F5">
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -29,11 +29,20 @@
                 Visibility="Collapsed"/>
         <DataGrid Name="dgProducts" Grid.Row="2" AutoGenerateColumns="False" 
                   IsReadOnly="True" SelectionMode="Single"
-                  CanUserAddRows="False" RowHeight="40">
+                  CanUserAddRows="False" RowHeight="60">
             <DataGrid.Columns>
+                <DataGridTemplateColumn Header="Изображение" Width="80">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding ImagePath}" 
+                                   Width="50" Height="50" 
+                                   Stretch="Uniform"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
                 <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>
                 <DataGridTextColumn Header="Название" Binding="{Binding Name}" Width="200"/>
-                <DataGridTextColumn Header="Цена" Binding="{Binding Price}" Width="100"/>
                 <DataGridTextColumn Header="Категория" Binding="{Binding Categories.Name}" Width="120"/>
                 <DataGridTemplateColumn Header="Действия" Width="200">
                     <DataGridTemplateColumn.CellTemplate>
@@ -41,16 +50,13 @@
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                                 <Button Content="Купить" Width="70" Margin="2" 
                                         Background="Green" Foreground="White"
-                                        Click="BuyProduct_Click" Tag="{Binding}"
-                                   />
+                                        Click="BuyProduct_Click" Tag="{Binding}"/>
                                 <Button Content="Редакт." Width="70" Margin="2" 
                                         Background="Orange" Foreground="White"
-                                        Click="EditProduct_Click" Tag="{Binding}"
-                                       />
+                                        Click="EditProduct_Click" Tag="{Binding}"/>
                                 <Button Content="Удалить" Width="70" Margin="2" 
                                         Background="Red" Foreground="White"
-                                        Click="DeleteProduct_Click" Tag="{Binding}"
-                                        />
+                                        Click="DeleteProduct_Click" Tag="{Binding}"/>
                             </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>

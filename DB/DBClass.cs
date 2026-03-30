@@ -9,6 +9,6 @@ namespace CoffeeShop.DB
 {
     public class DBClass
     {
-        public static CoffeeShopDBEntities connect=new CoffeeShopDBEntities();
+        public static CoffeeShopDBEntities1 connect =new CoffeeShopDBEntities1();
     }
 }

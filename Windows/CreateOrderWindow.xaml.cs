@@ -21,6 +21,7 @@ namespace CoffeeShop.Windows
         private Products _product;
         private int _quantity = 1;
         private decimal _unitPrice;
+
         public CreateOrderWindow(Products product)
         {
             InitializeComponent();
@@ -30,22 +31,28 @@ namespace CoffeeShop.Windows
             LoadProductInfo();
             UpdateTotal();
         }
+
         private void LoadProductInfo()
         {
             txtProductName.Text = _product.Name;
             txtProductPrice.Text = $"Цена: {_unitPrice:C}";
         }
+
         private void UpdateTotal()
         {
+            //decimal total = _unitPrice * _quantity;
+            //txtTotal.Text = $"{total:C}";
             decimal total = _unitPrice * _quantity;
-            txtTotal.Text = $"{total:C}";
+            //lblTotal.Text = $"{total}";
         }
+
         private void IncreaseQuantity_Click(object sender, RoutedEventArgs e)
         {
             _quantity++;
             txtQuantity.Text = _quantity.ToString();
             UpdateTotal();
         }
+
         private void DecreaseQuantity_Click(object sender, RoutedEventArgs e)
         {
             if (_quantity > 1)
@@ -55,7 +62,8 @@ namespace CoffeeShop.Windows
                 UpdateTotal();
             }
         }
-   private void txtQuantity_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+
+        private void txtQuantity_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
             if (int.TryParse(txtQuantity.Text, out int newQuantity))
             {
@@ -93,6 +101,7 @@ namespace CoffeeShop.Windows
                     Close();
                     return;
                 }
+
                 Orders order = new Orders
                 {
                     OrderDate = DateTime.Now,
@@ -101,8 +110,10 @@ namespace CoffeeShop.Windows
                     TotalAmount = _unitPrice * _quantity,
                     Status = "Новый"
                 };
+
                 DBClass.connect.Orders.Add(order);
                 DBClass.connect.SaveChanges();
+
                 OrderItems orderItem = new OrderItems
                 {
                     OrderId = order.Id,
@@ -111,11 +122,8 @@ namespace CoffeeShop.Windows
                     PriceAtMoment = _unitPrice
                 };
                 DBClass.connect.OrderItems.Add(orderItem);
-                if (!string.IsNullOrEmpty(txtComment.Text) || !string.IsNullOrEmpty(txtWishes.Text))
-                {
-                    string comment = $"Комментарий: {txtComment.Text}\nПожелания: {txtWishes.Text}";
-                }
                 DBClass.connect.SaveChanges();
+
                 MessageBox.Show($"Заказ №{order.Id} успешно оформлен!\n\n" +
                               $"Товар: {_product.Name}\n" +
                               $"Количество: {_quantity}\n" +
@@ -124,6 +132,7 @@ namespace CoffeeShop.Windows
                               "Заказ оформлен",
                               MessageBoxButton.OK,
                               MessageBoxImage.Information);
+
                 DialogResult = true;
                 Close();
             }
@@ -135,6 +144,7 @@ namespace CoffeeShop.Windows
                               MessageBoxImage.Error);
             }
         }
+
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             var result = MessageBox.Show("Вы действительно хотите отменить оформление заказа?",
