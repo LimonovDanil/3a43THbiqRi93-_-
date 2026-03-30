@@ -1,0 +1,33 @@
+﻿<Window x:Class="CoffeeShop.Windows.OrderConfirmationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CoffeeShop.Windows"
+        mc:Ignorable="d"
+              Title="Заказ оформлен" Height="300" Width="400"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize">
+    <Grid Background="#F5F5F5">
+        <StackPanel Margin="20" VerticalAlignment="Center">
+            <TextBlock Text="✅ Заказ успешно оформлен!" 
+                       FontSize="18" FontWeight="Bold" 
+                       HorizontalAlignment="Center"
+                       Foreground="Green"
+                       Margin="0,0,0,20"/>
+
+            <TextBlock Name="txtOrderInfo" 
+                       FontSize="14" 
+                       TextWrapping="Wrap"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,20"/>
+            <Button Name="btnOk" Content="OK" 
+                    Width="100" Height="35" 
+                    HorizontalAlignment="Center"
+                    Background="#8B4513" 
+                    Foreground="White"
+                    FontSize="14"
+                    Click="btnOk_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

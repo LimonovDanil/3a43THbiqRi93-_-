@@ -1,0 +1,70 @@
+﻿<Window x:Class="CoffeeShop.Windows.CategoryEditWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CoffeeShop.Windows"
+        mc:Ignorable="d"
+        Title="Редактирование категории" Height="300" Width="400"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize">
+    <Grid Background="#F5F5F5">
+        <Grid Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="🏷️ Редактирование категории" 
+                       FontSize="18" FontWeight="Bold" 
+                       HorizontalAlignment="Center" 
+                       Margin="0,0,0,20" 
+                       Grid.Row="0"
+                       Foreground="#8B4513"/>
+            <TextBlock Text="Название категории:" Grid.Row="1" Margin="0,5" 
+                       FontSize="12" FontWeight="Bold"/>
+            <TextBox Name="txtName" Grid.Row="2" Height="35" Margin="0,0,0,15"
+                     FontSize="14" Padding="5"
+                     TextChanged="txtName_TextChanged"/>
+            <Border Grid.Row="3" Background="#FFF4E6" CornerRadius="5" 
+                    Padding="10" Margin="0,0,0,15">
+                <StackPanel>
+                    <TextBlock Text="Предварительный просмотр:" FontSize="11" 
+                               Foreground="#8B4513" FontWeight="Bold"/>
+                    <TextBlock Name="txtPreview" FontSize="14" Margin="0,5,0,0"/>
+                </StackPanel>
+            </Border>
+            <Border Grid.Row="4" Background="#E3F2FD" CornerRadius="5" 
+                    Padding="10" Margin="0,0,0,15">
+                <StackPanel>
+                    <TextBlock Text="Статистика:" FontSize="11" 
+                               Foreground="#1976D2" FontWeight="Bold"/>
+                    <TextBlock Name="txtStats" FontSize="12" Margin="0,5,0,0"/>
+                </StackPanel>
+            </Border>
+            <StackPanel Orientation="Horizontal" Grid.Row="5" 
+                        HorizontalAlignment="Center" Margin="0,10,0,0">
+                <Button Name="btnSave" Content="💾 Сохранить" 
+                        Width="120" Height="40" 
+                        Margin="5" Background="#4CAF50" 
+                        Foreground="White" FontSize="14"
+                        FontWeight="Bold" Cursor="Hand"
+                        Click="btnSave_Click"/>
+                <Button Name="btnCancel" Content="❌ Отмена" 
+                        Width="100" Height="40" 
+                        Margin="5" Background="#9E9E9E" 
+                        Foreground="White" FontSize="14"
+                        FontWeight="Bold" Cursor="Hand"
+                        Click="btnCancel_Click"/>
+            </StackPanel>
+
+            <TextBlock Name="txtError" Grid.Row="6" Foreground="Red" 
+                       HorizontalAlignment="Center" Margin="0,10,0,0"
+                       FontSize="11"/>
+        </Grid>
+    </Grid>
+</Window>
